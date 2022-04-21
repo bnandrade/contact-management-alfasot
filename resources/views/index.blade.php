@@ -84,8 +84,13 @@
                                 </div>
                             </div>
                         </div>
-                </div>
+                    </div>
 
+                    <div class="flex flex-col my-4">
+                        <div class="mx-auto text-center items-center sm:rounded-lg">
+                            {{ $contacts->onEachSide(5)->links()  }}
+                        </div>
+                    </div>
 
             </div>
         </div>
