@@ -42,7 +42,13 @@ class ContactController extends Controller
 
         // Retrieve the validated input data...
         $validated = $request->validated();
-        ddd($validated);
+
+        $contact = Contact::create($validated);
+
+        if($contact){
+            return  redirect()->route('index');
+        }
+
     }
 
     /**
