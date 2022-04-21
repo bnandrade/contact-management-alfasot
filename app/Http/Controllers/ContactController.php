@@ -6,9 +6,11 @@ use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -147,5 +149,37 @@ class ContactController extends Controller
 
         return view('show', compact('contact'));
 
+    }
+
+    /**
+     * Handle an authentication attempt.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function authenticate()
+    {
+        $credentials = [
+            'email' => 'bruno_weusa@hotmail.com',
+            'password' => 'password',
+        ];
+
+        if (Auth::attempt($credentials)) {
+            //$request->session()->regenerate();
+
+            return redirect()->intended('/');
+        }
+
+    }
+
+    /**
+     * Display a login page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function login()
+    {
+
+        return view("login");
     }
 }

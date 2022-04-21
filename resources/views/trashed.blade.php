@@ -19,6 +19,12 @@
                         </div>
                     </div>
 
+                    <div class="px-6 py-4">
+                        <div class="flex ">
+                            <a href="{{ route('index') }}" class="text-gray-700 hover:underline">Return to Home</a>
+                        </div>
+                    </div>
+
                     <div class="mt-2 px-6 py-4 border-t border-gray-200 md:border-t-0 md:border-l">
                         <div class="flex flex-col">
                             <div class="overflow-x-auto shadow-md sm:rounded-lg">

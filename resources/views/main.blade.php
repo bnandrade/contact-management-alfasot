@@ -21,6 +21,9 @@
     </style>
 </head>
 <body class="antialiased">
+    @if (Auth::check())
+        <div class="w-full p-4 bg-gray-100r">User logged</div>
+    @endif
     @yield('content')
     @yield('scripts')
 </body>
