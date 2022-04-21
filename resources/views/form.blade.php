@@ -16,7 +16,7 @@
                     <div class="px-6 py-4">
                         <div class="flex items-center">
                             <div class="mx-auto text-lg leading-7 font-semibold">
-                                <p class=" text-gray-900">Create Contact</p>
+                                <p class=" text-gray-900">Form Contact</p>
                             </div>
                         </div>
                     </div>
@@ -40,20 +40,38 @@
                             @endif
 
                             <form method="POST" action="{{ isset($contact) ? route('update',$contact->id) : route('store') }}">
-                                @if (isset($contact)) {{ method_field('PUT') }} @endif
                                 {{ csrf_field() }}
-                                <div class="mb-6">
-                                    <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Contact name</label>
-                                    <input type="text" id="name" name="name" value="{{ old('name', $contact->name) }}"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Bruno Andrade" required="">
-                                </div>
-                                <div class="mb-6">
-                                    <label for="contact" class="text-sm font-medium text-gray-900 block mb-2">Contact number</label>
-                                    <input type="text" id="contact" name="contact" value="{{ old('contact', $contact->contact) }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="123456789" required="">
-                                </div>
-                                <div class="mb-6">
-                                    <label for="email" class="text-sm font-medium text-gray-900 block mb-2">Email</label>
-                                    <input type="email" id="email" name="email" value="{{ old('email', $contact->email) }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@email.com" required="">
-                                </div>
+                                @if (isset($contact))
+                                    {{ method_field('PUT') }}
+                                    <div class="mb-6">
+                                        <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Contact name</label>
+                                        <input type="text" id="name" name="name" value="{{ old('name', $contact->name) }}"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Bruno Andrade" required="">
+                                    </div>
+                                    <div class="mb-6">
+                                        <label for="contact" class="text-sm font-medium text-gray-900 block mb-2">Contact number</label>
+                                        <input type="text" id="contact" name="contact" value="{{ old('contact', $contact->contact) }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="123456789" required="">
+                                    </div>
+                                    <div class="mb-6">
+                                        <label for="email" class="text-sm font-medium text-gray-900 block mb-2">Email</label>
+                                        <input type="email" id="email" name="email" value="{{ old('email', $contact->email) }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@email.com" required="">
+                                    </div>
+                                @else
+
+                                    <div class="mb-6">
+                                        <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Contact name</label>
+                                        <input type="text" id="name" name="name" value="{{ old('name') }}"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Bruno Andrade" required="">
+                                    </div>
+                                    <div class="mb-6">
+                                        <label for="contact" class="text-sm font-medium text-gray-900 block mb-2">Contact number</label>
+                                        <input type="text" id="contact" name="contact" value="{{ old('contact') }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="123456789" required="">
+                                    </div>
+                                    <div class="mb-6">
+                                        <label for="email" class="text-sm font-medium text-gray-900 block mb-2">Email</label>
+                                        <input type="email" id="email" name="email" value="{{ old('email') }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@email.com" required="">
+                                    </div>
+                                @endif
+
+
                                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
 
                             </form>

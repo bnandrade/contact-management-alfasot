@@ -15,19 +15,7 @@
                 <div class="">
                     <div class="px-6 py-4">
                         <div class="flex items-center">
-                            <div class="mx-auto text-lg leading-7 font-semibold"><p class=" text-gray-900 ">Contact Management Web application - <span class="italic">by Bruno Andrade</span></p></div>
-                        </div>
-                    </div>
-
-                    <div class="px-6 py-2">
-                        <div class="flex flex-row-reverse">
-                            <a href="{{ route('create') }}" class="text-white bg-green-700 p-2 rounded hover:bg-green-500">Add Contact</a>
-                        </div>
-                    </div>
-
-                    <div class="px-6">
-                        <div class="flex flex-row-reverse">
-                            <a href="{{ route('trashed') }}" class="mr-2 text-red-800 hover:text-red-500">Trasheds contacts</a>
+                            <div class="mx-auto text-lg leading-7 font-semibold"><p class=" text-gray-900 ">Trasheds Contacts</div>
                         </div>
                     </div>
 
@@ -51,7 +39,7 @@
                                                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                     Email
                                                 </th>
-                                                <th scope="col" colspan="3" class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase">
+                                                <th scope="col"  class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase">
                                                     Actions
                                                 </th>
                                             </tr>
@@ -63,18 +51,12 @@
                                                     <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap ">{{ $contact->name }}</td>
                                                     <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $contact->contact }}</td>
                                                     <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $contact->email }}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                                        <a href="{{ route('show',$contact->id) }}" class=" hover:underline">Details</a>
-                                                    </td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                                        <a href="{{ route('edit',$contact->id) }}" class="text-blue-600 hover:underline">Edit</a>
-                                                    </td>
-                                                    <td class="py-4 px-6 text-xs font-medium text-right whitespace-nowrap">
-                                                        <form method="POST" action="{{ route('destroy', $contact->id) }}" onsubmit="return confirmDelete()">
+                                                    <td class="py-4 px-6 text-xs font-medium text-center whitespace-nowrap">
+                                                        <form method="POST" action="{{ route('restore') }}" onsubmit="return confirmRestore()">
                                                             {{ csrf_field() }}
-                                                            {{ method_field('DELETE') }}
                                                             <div class="form-group">
-                                                                <input type="submit" class="text-white bg-red-700 p-1 rounded hover:bg-red-500" value="Delete">
+                                                                <input type="hidden" name="id" id="id" value="{{ $contact->id }}">
+                                                                <input type="submit" class="text-white bg-blue-700 p-1 rounded hover:bg-blue-500" value="Restore">
                                                             </div>
                                                         </form>
                                                     </td>
@@ -89,27 +71,23 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-col my-4">
-                            <div class="mx-auto text-center items-center sm:rounded-lg">
-                                {{ $contacts->onEachSide(5)->links()  }}
-                            </div>
-                        </div>
 
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
 @endsection
 
+
 @section('scripts')
-<script>
-    function confirmDelete() {
-        if(confirm("Are you sure you want to delete?")){
-            return true;
-        }else{
-            return false;
-        };
-    }
-</script>
+    <script>
+        function confirmRestore() {
+            if(confirm("Are you sure you want to restore?")){
+                return true;
+            }else{
+                return false;
+            };
+        }
+    </script>
 @endsection

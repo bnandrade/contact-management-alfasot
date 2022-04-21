@@ -40,7 +40,15 @@
                                 <div class="flex justify-end mt-4">
                                     <a href="{{ route('edit',$contact->id) }}" class="text-blue-600 hover:underline mr-6">Edit</a>
 
-                                    <button class="text-white text-xs bg-red-700 p-1 rounded hover:bg-red-500">Delete</button>
+                                    <div>
+                                        <form method="POST" action="{{ route('destroy', $contact->id) }}" onsubmit="return confirmDelete()">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <div class="form-group">
+                                                <input type="submit" class="text-white bg-red-700 p-1 rounded hover:bg-red-500" value="Delete">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -49,4 +57,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function confirmDelete() {
+            if(confirm("Are you sure you want to delete?")){
+                return true;
+            }else{
+                return false;
+            };
+        }
+    </script>
 @endsection

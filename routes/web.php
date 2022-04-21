@@ -21,4 +21,6 @@ Route::get('contact/{id}', [ContactController::class, 'show'])->name('show');
 Route::get('contact/{id}/edit', [ContactController::class, 'edit'])->name('edit');
 Route::put('contact/{id}', [ContactController::class, 'update'])->name('update');
 Route::delete('contact/{id}', [ContactController::class, 'destroy'])->name('destroy');
+Route::get('trashed', [ContactController::class, 'onlyTrashed'])->name('trashed');
+Route::post('restore', [ContactController::class, 'restore'])->name('restore');
 

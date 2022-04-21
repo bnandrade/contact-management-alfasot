@@ -28,7 +28,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('form');
+        $contact = null;
+        return view("form", ['contact' => $contact]);
     }
 
     /**
@@ -109,8 +110,42 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        //
+        $contact = Contact::where('id', $id)->firstOrFail();
+        $contact->delete();
+
+        $contacts = Contact::paginate(15);
+
+        return redirect()->route('index', ['contacts' => $contacts]);
+    }
+
+    /**
+     * Display a listing of the soft deleteds.
+     *
+     * @param  \App\Models\Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
+    public function onlyTrashed()
+    {
+        $contactsTrashed = Contact::onlyTrashed()->get();
+
+        return view("trashed", ['contacts' => $contactsTrashed]);
+    }
+
+
+    /**
+     * Restore a soft deleted.
+     *
+     * @return \Illuminate\Http\Request
+     */
+    public function restore(Request $request)
+    {
+        Contact::withTrashed()->find($request->id)->restore();
+
+        $contact = Contact::where('id', $request->id)->firstOrFail();
+
+        return view('show', compact('contact'));
+
     }
 }

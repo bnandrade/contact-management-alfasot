@@ -22,5 +22,6 @@
 </head>
 <body class="antialiased">
     @yield('content')
+    @yield('scripts')
 </body>
 </html>
