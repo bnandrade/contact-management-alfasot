@@ -27,7 +27,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('form');
     }
 
     /**
@@ -54,23 +54,29 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contact  $contact
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show($id)
     {
-        //
+
+        $contact = Contact::where('id', $id)->firstOrFail();
+
+        return view('show', compact('contact'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Contact  $contact
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {
-        //
+
+        $contact = Contact::where('id', $id)->firstOrFail();
+
+        return view('form', compact('contact'));
     }
 
     /**
@@ -82,7 +88,7 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        ddd($request);
     }
 
     /**

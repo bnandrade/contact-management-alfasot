@@ -45,7 +45,7 @@
                                                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                     Email
                                                 </th>
-                                                <th scope="col" colspan="2" class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase">
+                                                <th scope="col" colspan="3" class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase">
                                                     Actions
                                                 </th>
                                             </tr>
@@ -58,7 +58,10 @@
                                                     <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $contact->contact }}</td>
                                                     <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $contact->email }}</td>
                                                     <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                                        <a href="#" class="text-blue-600 hover:underline">Edit</a>
+                                                        <a href="{{ route('show',$contact->id) }}" class=" hover:underline">Details</a>
+                                                    </td>
+                                                    <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                                        <a href="{{ route('edit',$contact->id) }}" class="text-blue-600 hover:underline">Edit</a>
                                                     </td>
                                                     <td class="py-4 px-6 text-xs font-medium text-right whitespace-nowrap">
                                                         <button class="text-white bg-red-700 p-1 rounded hover:bg-red-500">Delete</button>
