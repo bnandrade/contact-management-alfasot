@@ -19,6 +19,12 @@
                         </div>
                     </div>
 
+                    <div class="px-6 py-4">
+                        <div class="flex flex-row-reverse">
+                            <a href="{{ route('create') }}" class="text-white bg-green-700 p-2 rounded hover:bg-green-500">Add Contact</a>
+                        </div>
+                    </div>
+
                     <div class="mt-2 px-6 py-4 border-t border-gray-200 md:border-t-0 md:border-l">
                         <div class="flex flex-col">
                             <div class="overflow-x-auto shadow-md sm:rounded-lg">
@@ -54,8 +60,8 @@
                                                     <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                                         <a href="#" class="text-blue-600 hover:underline">Edit</a>
                                                     </td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                                        <a href="#" class="text-red-600 hover:underline">Delete</a>
+                                                    <td class="py-4 px-6 text-xs font-medium text-right whitespace-nowrap">
+                                                        <button class="text-white bg-red-700 p-1 rounded hover:bg-red-500">Delete</button>
                                                     </td>
                                                 </tr>
 
