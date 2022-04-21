@@ -38,7 +38,7 @@
                                     <p class="mt-2 text-gray-600">Email: {{ $contact->email }}</p>
                                 </div>
                                 <div class="flex justify-end mt-4">
-                                    <a href="{{ route('show',$contact->id) }}" class="text-blue-600 hover:underline mr-6">Edit</a>
+                                    <a href="{{ route('edit',$contact->id) }}" class="text-blue-600 hover:underline mr-6">Edit</a>
 
                                     <button class="text-white text-xs bg-red-700 p-1 rounded hover:bg-red-500">Delete</button>
                                 </div>

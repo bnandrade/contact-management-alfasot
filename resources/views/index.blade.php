@@ -64,7 +64,13 @@
                                                         <a href="{{ route('edit',$contact->id) }}" class="text-blue-600 hover:underline">Edit</a>
                                                     </td>
                                                     <td class="py-4 px-6 text-xs font-medium text-right whitespace-nowrap">
-                                                        <button class="text-white bg-red-700 p-1 rounded hover:bg-red-500">Delete</button>
+                                                        <form method="POST" action="{{ route('destroy', $contact->id) }}" onsubmit="return confirmDelete()">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('DELETE') }}
+                                                            <div class="form-group">
+                                                                <input type="submit" class="text-white bg-red-700 p-1 rounded hover:bg-red-500" value="Delete">
+                                                            </div>
+                                                        </form>
                                                     </td>
                                                 </tr>
 
@@ -89,3 +95,13 @@
         </div>
     </div>
 @endsection
+        <script>
+            function confirmDelete() {
+                if(confirm("Are you sure you want to delete?")){
+                    return true;
+                }else{
+                    return false;
+                };
+            }
+        </script>
+

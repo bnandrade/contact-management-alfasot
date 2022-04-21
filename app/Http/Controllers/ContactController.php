@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -82,13 +83,24 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $contact
+     * @param UpdateContactRequest $request
+     * @param \App\Models\Contact $contact
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function update(Request $request, Contact $contact)
+    public function update(UpdateContactRequest $request, $id)
     {
-        ddd($request);
+        // Retrieve the validated input data...
+        $validated = $request->validated();
+
+        $contact = Contact::where('id', $id)->firstOrFail();
+
+        $contact->name = $validated['name'];
+        $contact->contact = $validated['contact'];
+        $contact->email = $validated['email'];
+        $contact->save();
+
+        return view('show', compact('contact'));
     }
 
     /**
