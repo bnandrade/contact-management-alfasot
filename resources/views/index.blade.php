@@ -21,14 +21,14 @@
     </style>
 </head>
 <body class="antialiased">
-<div class=" min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+<div class=" min-h-screen bg-gray-100 sm:items-center py-4 sm:pt-0">
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 py-4">
         <div class="flex justify-center pt-8 sm:justify-center sm:pt-0">
             <img src="https://www.alfasoft.pt/assets/images/logo.png">
         </div>
 
-        <div class="w-full mt-8 bg-white dark:bg-gray-800  shadow sm:rounded-lg">
+        <div class="w-full mt-8 bg-white  shadow sm:rounded-lg">
 
             <div class="">
                 <div class="px-6 py-4">
@@ -37,40 +37,43 @@
                     </div>
                 </div>
 
-                <div class="mt-2 px-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+                <div class="mt-2 px-6 py-4 border-t border-gray-200 md:border-t-0 md:border-l">
                     <div class="flex flex-col">
                         <div class="overflow-x-auto shadow-md sm:rounded-lg">
                             <div class="inline-block min-w-full align-middle">
                                 <div class="overflow-hidden ">
-                                    <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                                        <thead class="bg-gray-100 dark:bg-gray-700">
+                                    <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                                        <thead class="bg-gray-100">
                                         <tr>
-                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 #
                                             </th>
-                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 Contact Name
                                             </th>
-                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 Contact number
                                             </th>
-                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                            <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                 Email
                                             </th>
-                                            <th scope="col" class="p-4">
-                                                <span class="sr-only">Edit</span>
+                                            <th scope="col" colspan="2" class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase">
+                                                Actions
                                             </th>
                                         </tr>
                                         </thead>
-                                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                        <tbody class="bg-white divide-y divide-gray-200 ">
                                         @foreach ($contacts as $contact)
-                                            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $contact->id }}</td>
-                                                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{{ $contact->name }}</td>
-                                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $contact->contact }}</td>
-                                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $contact->email }}</td>
+                                            <tr class="hover:bg-gray-100 ">
+                                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $contact->id }}</td>
+                                                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap ">{{ $contact->name }}</td>
+                                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $contact->contact }}</td>
+                                                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $contact->email }}</td>
                                                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                                    <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                                    <a href="#" class="text-blue-600 hover:underline">Edit</a>
+                                                </td>
+                                                <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                                    <a href="#" class="text-red-600 hover:underline">Delete</a>
                                                 </td>
                                             </tr>
 
